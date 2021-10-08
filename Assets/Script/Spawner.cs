@@ -20,8 +20,7 @@ public class Spawner : MonoBehaviour
             _timer = 0f;
         }
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         Timer += Time.deltaTime;

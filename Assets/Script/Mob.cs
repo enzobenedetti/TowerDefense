@@ -7,10 +7,12 @@ using UnityEngine.AI;
 public class Mob : MonoBehaviour
 {
     private NavMeshAgent agent;
+    public static List<Mob> Mobs = new List<Mob>();
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        Mobs.Add(this);
     }
 
     // Start is called before the first frame update
@@ -19,9 +21,14 @@ public class Mob : MonoBehaviour
         agent.SetDestination(Goal.GoalPosition);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Vector3.Distance(transform.position, Goal.GoalPosition) < 2f)
+            Destroy(this.gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        Mobs.Remove(this);
     }
 }
