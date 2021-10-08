@@ -6,16 +6,17 @@ using UnityEngine;
 public class Goal : MonoBehaviour
 {
     static GameObject GoalReference;
-    
-    private static Vector3 _goalPosition;
-    public static Vector3 GoalPosition
+    public static List<Goal> Goals = new List<Goal>();
+
+    private Vector3 _goalPosition;
+    public Vector3 GoalPosition
     {
         get => _goalPosition;
         set => _goalPosition = value;
     }
 
-    private static int _goalHealth;
-    public static int GoalHealth
+    private int _goalHealth;
+    public int GoalHealth
     {
         get => _goalHealth;
         set
@@ -29,8 +30,14 @@ public class Goal : MonoBehaviour
 
     private void Awake()
     {
+        Goals.Add(this);
         GoalReference = this.gameObject;
         GoalPosition = this.transform.position;
         GoalHealth = 5;
+    }
+
+    private void OnDestroy()
+    {
+        Goals.Remove(this);
     }
 }

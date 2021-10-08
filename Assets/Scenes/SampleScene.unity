@@ -1610,6 +1610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookDistance: 5
+  coolDown: 10
 --- !u!1 &1843331887
 GameObject:
   m_ObjectHideFlags: 0
