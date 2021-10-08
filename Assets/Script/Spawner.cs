@@ -23,7 +23,8 @@ public class Spawner : MonoBehaviour
     
     void Update()
     {
-        Timer += Time.deltaTime;
+        if (GameManager.GameActualState == GameManager.GameState.InGame)
+            Timer += Time.deltaTime;
     }
 
     void SpawnMob()

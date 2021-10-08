@@ -23,8 +23,13 @@ public class Mob : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position, Goal.GoalPosition) < 2f)
+        if (GameManager.GameActualState == GameManager.GameState.GameOver)
+                 agent.ResetPath();
+        else if (Vector3.Distance(transform.position, Goal.GoalPosition) < 2f)
+        {
             Destroy(this.gameObject);
+            Goal.GoalHealth--;
+        }
     }
 
     private void OnDestroy()
