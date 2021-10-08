@@ -10,6 +10,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     GameObject bullet;
     LineRenderer line;
+    public static int towerCost = 10;
     
     private float _timer;
     public float Timer

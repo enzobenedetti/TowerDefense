@@ -21,10 +21,11 @@ public class PlaceTower : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, Mathf.Infinity))
             {
-                if (hit.transform.tag == "TowerPlace")
+                if (hit.transform.tag == "TowerPlace" && Money.Amount >= Tower.towerCost)
                 {
                     GameObject tower = Instantiate(towerPrefab, hit.point, Quaternion.identity, transform);
                     tower.transform.position = new Vector3(hit.point.x, 1f, hit.point.z);
+                    Money.Amount -= Tower.towerCost;
                 }
             }
             

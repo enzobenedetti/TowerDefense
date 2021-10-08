@@ -32,6 +32,7 @@ public class GameManager
                 break;
             case GameState.InGame:
                 SceneManager.LoadScene(0);
+                Money.Amount = 20;
                 break;
         }
     }

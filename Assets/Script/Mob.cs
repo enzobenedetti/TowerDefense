@@ -11,6 +11,8 @@ public class Mob : MonoBehaviour
 
     private bool isDead;
     private Goal goalAimed;
+
+    private int killPrize = 1;
     
     private int _health;
     public int Health
@@ -66,6 +68,7 @@ public class Mob : MonoBehaviour
 
     private void OnDestroy()
     {
+        Money.Amount += killPrize;
         Mobs.Remove(this);
     }
 }
