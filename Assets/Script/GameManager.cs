@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager
 {
@@ -11,24 +12,27 @@ public class GameManager
         GameOver
     }
 
-    public static GameState GameActualState = GameState.InGame;
-
-    public static List<GameObject> GameOverGo = new List<GameObject>();
-    
-    void Awake()
+    private static GameState _gameActualState = GameState.InGame;
+    public static GameState GameActualState
     {
-        GameOverGo.Add(GameObject.FindGameObjectWithTag("GameOver"));
+        get => _gameActualState;
+        set
+        {
+            _gameActualState = value;
+            ChangeScene();
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    static void ChangeScene()
     {
-        if (GameActualState == GameState.GameOver)
+        switch (GameActualState)
         {
-            foreach (var obj in GameOverGo)
-            {
-                obj.SetActive(true);
-            }
+            case GameState.GameOver:
+                SceneManager.LoadScene(1);
+                break;
+            case GameState.InGame:
+                SceneManager.LoadScene(0);
+                break;
         }
     }
 }
