@@ -4,7 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - GameOver
+  - Ground
+  - TowerPlace
   layers:
   - Default
   - TransparentFX
