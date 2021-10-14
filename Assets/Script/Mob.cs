@@ -69,7 +69,11 @@ public class Mob : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (isDead) Money.Amount += killPrize;
+        if (isDead) 
+        {
+            Money.Amount += killPrize;
+            UpdateScore.AddScore();
+        }
         Mobs.Remove(this);
     }
 }

@@ -9,10 +9,18 @@ public class UpdateScore : MonoBehaviour
     [SerializeField] private Text killText;
     [SerializeField] private Text waveText;
 
+    private static int score;
+
     // Update is called once per frame
     void Update()
     {
         moneyText.text = "Money : " + Money.Amount;
+        killText.text = "Score : " + score;
         waveText.text = "Wave : " + WaveSystem.wave;
+    }
+
+    public static void AddScore()
+    {
+        score++;
     }
 }
