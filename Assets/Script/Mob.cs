@@ -8,6 +8,7 @@ public class Mob : MonoBehaviour
 {
     private NavMeshAgent agent;
     public static List<Mob> Mobs = new List<Mob>();
+    
 
     private bool isDead;
     private Goal goalAimed;
@@ -68,7 +69,7 @@ public class Mob : MonoBehaviour
 
     private void OnDestroy()
     {
-        Money.Amount += killPrize;
+        if (isDead) Money.Amount += killPrize;
         Mobs.Remove(this);
     }
 }
